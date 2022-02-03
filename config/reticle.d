@@ -157,11 +157,12 @@ func void GFA_GetSpellReticle(var C_Npc target, var int spellID, var C_Spell spe
         // Ice spells
         reticle.texture = RETICLE_SPADES;
     } else if (STR_IndexOf(spellName, "FIRE") != -1)
-    || (STR_IndexOf(spellName, "PYRO") != -1) {
+    || (STR_IndexOf(spellName, "PYRO") != -1)
+    || (STR_IndexOf(spellName, "EXPLOSION") != -1) {
         // Fire spells
         reticle.texture = RETICLE_HORNS;
     } else if (STR_IndexOf(spellName, "WATER") != -1)
-    || (STR_IndexOf(spellName, "INFLATE") != -1)
+//    || (STR_IndexOf(spellName, "INFLATE") != -1)
     || (STR_IndexOf(spellName, "GEYSER") != -1)
     || (STR_IndexOf(spellName, "WIND") != -1)
     || (STR_IndexOf(spellName, "STORM") != -1) {
@@ -173,27 +174,43 @@ func void GFA_GetSpellReticle(var C_Npc target, var int spellID, var C_Spell spe
     || (STR_IndexOf(spellName, "THUNDER") != -1) {
         // Electric spells
         reticle.texture = RETICLE_BOLTS;
-    } else if (STR_IndexOf(spellName, "PAL") != -1) {
+    } else if ((STR_IndexOf(spellName, "TPL") != -1)
+                && (spellID != 104))                                                // excl. SPL_GuruWrath (TPLSUPERSTRIKE)
+    || ((STR_IndexOf(spellName, "PALREPELEVIL") != -1) && (spellID == 78)) {        // SPL_TPLMEDIUMSTRIKE (PALREPELEVIL)
+        // Templar spells
+        reticle.texture = RETICLE_SQUIGGLE;
+    } else if (STR_IndexOf(spellName, "PAL") != -1)
+    || (STR_IndexOf(spellName, "DESTROYUNDEAD") != -1)
+    || (STR_IndexOf(spellName, "MASTEROFDISASTER") != -1)
+    || (STR_IndexOf(spellName, "CONCUSSIONBOLT") != -1)
+    || (STR_IndexOf(spellName, "INFLATE") != -1) {
         // Paladin spells
         reticle.texture = RETICLE_FRAME;
     } else if (STR_IndexOf(spellName, "DEATH") != -1)
-    || (STR_IndexOf(spellName, "DESTROYUNDEAD") != -1)
-    || (STR_IndexOf(spellName, "MASTEROFDISASTER") != -1)
+//    || (STR_IndexOf(spellName, "DESTROYUNDEAD") != -1)
+//    || (STR_IndexOf(spellName, "MASTEROFDISASTER") != -1)
     || (STR_IndexOf(spellName, "SWARM") != -1)
     || (STR_IndexOf(spellName, "GREENTENTACLE") != -1)
     || (STR_IndexOf(spellName, "ENERGYBALL") != -1)
     || (STR_IndexOf(spellName, "SUCKENERGY") != -1)
-    || (STR_IndexOf(spellName, "SKULL") != -1) {
+    || (STR_IndexOf(spellName, "SKULL") != -1)
+    || (STR_IndexOf(spellName, "BELIARRUNE") != -1)
+    || (STR_IndexOf(spellName, "LACERATE") != -1) {
         // Evil spells
         reticle.texture = RETICLE_BOWL;
     } else if (STR_IndexOf(spellName, "CHARM") != -1)
     || (STR_IndexOf(spellName, "SLEEP") != -1)
     || (STR_IndexOf(spellName, "CONTROL") != -1)
     || (STR_IndexOf(spellName, "BERZERK") != -1)
-    || (STR_IndexOf(spellName, "SHRINK") != -1) {
+    || (STR_IndexOf(spellName, "SHRINK") != -1)
+    || (STR_IndexOf(spellName, "ACID") != -1)
+    || (STR_IndexOf(spellName, "RAGE") != -1)
+    || ((STR_IndexOf(spellName, "TPLSUPERSTRIKE") != -1) && (spellID == 104)) {     // SPL_GuruWrath (TPLSUPERSTRIKE)
         // Psyonic spells
         reticle.texture = RETICLE_EDGES;
     } else {
+//    || (STR_IndexOf(spellName, "ADANOSBALL") != -1)
+//    || (STR_IndexOf(spellName, "DESTROYGUARDIANS") != -1)
         // Set this as 'default' texture here (if none of the conditions above is met)
         reticle.texture = RETICLE_EDGES;
     };
